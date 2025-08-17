@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDeskPlus.SDK", "ServiceDeskPlus.SDK\ServiceDeskPlus.SDK.csproj", "{E3BEFBFB-2B9C-4921-9EE7-50850DF26C95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDeskPlus.Debug", "ServiceDeskPlus.Debug\ServiceDeskPlus.Debug.csproj", "{993565AB-42D8-453A-9AE3-4AE2C3D8ABD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDeskPlus.Tests", "ServiceDeskPlus.Tests\ServiceDeskPlus.Tests.csproj", "{7EEA9770-32A5-4A83-BB6D-E37E390474D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E3BEFBFB-2B9C-4921-9EE7-50850DF26C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3BEFBFB-2B9C-4921-9EE7-50850DF26C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3BEFBFB-2B9C-4921-9EE7-50850DF26C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3BEFBFB-2B9C-4921-9EE7-50850DF26C95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{993565AB-42D8-453A-9AE3-4AE2C3D8ABD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{993565AB-42D8-453A-9AE3-4AE2C3D8ABD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{993565AB-42D8-453A-9AE3-4AE2C3D8ABD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{993565AB-42D8-453A-9AE3-4AE2C3D8ABD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EEA9770-32A5-4A83-BB6D-E37E390474D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EEA9770-32A5-4A83-BB6D-E37E390474D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EEA9770-32A5-4A83-BB6D-E37E390474D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EEA9770-32A5-4A83-BB6D-E37E390474D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
