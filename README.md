@@ -15,6 +15,7 @@ A lightweight .NET SDK that simplifies working with the ManageEngine ServiceDesk
 ## Getting started
 While the exact initialization may vary based on your environment and authentication, the general pattern is:
 
+### Simple instantiation
 ```csharp
 using ServiceDeskPlus.SDK;
 
@@ -26,6 +27,38 @@ var sdpClient = new SdpClient(sdpHost, sdpAuthToken);
 
 // Example: retrieve a request by id
 var result = await sdpClient.Request.GetAsync(12345);
+```
+
+### Dependency injection
+#### Initialization
+```csharp
+using ServiceDeskPlus.SDK;
+
+// Assuming the options are stored in the "ServiceDeskPlus" scope of the configuration.
+string hostAddress = builder.Configuration.GetValue("ServiceDeskPlus:HostAddress", "https://localhost:8080");
+string authToken = builder.Configuration.GetValue("ServiceDeskPlus:AuthToken", "");
+builder.Services.AddScoped(s => new ServiceDeskPlus.SDK.SdpClient(hostAddress, authToken));
+```
+
+#### Usage
+```csharp
+using ServiceDeskPlus.SDK;
+
+public class MyService
+{
+    private readonly SdpClient _sdpClient;
+    
+    public MyService(SdpClient sdpClient)
+    {
+        _sdpClient = sdpClient;
+    }
+    
+    public async Task SomeTask()
+    {
+        var request = await _sdpClient.Request.GetAsync(12345);
+        // Do something with the result...
+    }
+}
 ```
 
 Adjust the base URL and authentication to match your ServiceDesk Plus instance and configuration.
