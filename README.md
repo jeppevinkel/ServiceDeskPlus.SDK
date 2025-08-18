@@ -1,5 +1,6 @@
 # ServiceDeskPlus SDK
 
+[![NuGet Version](https://img.shields.io/nuget/v/ServiceDeskPlus.SDK)](https://www.nuget.org/packages/ServiceDeskPlus.SDK)
 [![codecov](https://codecov.io/github/jeppevinkel/ServiceDeskPlus.SDK/graph/badge.svg?token=1YH1X27JBL)](https://codecov.io/github/jeppevinkel/ServiceDeskPlus.SDK)
 
 A lightweight .NET SDK that simplifies working with the ManageEngine ServiceDesk Plus REST API. The library provides a typed client and models so you can issue requests and handle responses and API errors in a straightforward, idiomatic C# way.
