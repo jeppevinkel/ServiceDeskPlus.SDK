@@ -11,10 +11,15 @@
         <Authors>Jeppevinkel</Authors>
         <Description>Unofficial SDK for interacting with the ManageEngine ServiceDesk Plus v3 API </Description>
         <PackageProjectUrl>https://github.com/jeppevinkel/ServiceDeskPlus.SDK</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/jeppevinkel/ServiceDeskPlus.SDK/blob/main/LICENSE</PackageLicenseUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/jeppevinkel/ServiceDeskPlus.SDK</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>ServiceDesk, ManageEngine, ServiceDeskPlus</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
+    
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
 
 </Project>
