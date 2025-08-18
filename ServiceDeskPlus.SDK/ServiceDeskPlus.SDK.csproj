@@ -5,6 +5,16 @@
         <LangVersion>latest</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Version>0.0.1</Version>
+        <Title>ServiceDeskPlus.SDK</Title>
+        <Authors>Jeppevinkel</Authors>
+        <Description>Unofficial SDK for interacting with the ManageEngine ServiceDesk Plus v3 API </Description>
+        <PackageProjectUrl>https://github.com/jeppevinkel/ServiceDeskPlus.SDK</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/jeppevinkel/ServiceDeskPlus.SDK/blob/main/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/jeppevinkel/ServiceDeskPlus.SDK</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>ServiceDesk, ManageEngine, ServiceDeskPlus</PackageTags>
     </PropertyGroup>
 
 </Project>
