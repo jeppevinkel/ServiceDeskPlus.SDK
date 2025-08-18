@@ -1,0 +1,55 @@
+name: Pack Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  pack:
+    name: Pack and Publish NuGet
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Determine version from tag
+        id: get_version
+        shell: bash
+        run: |
+          ref="${GITHUB_REF#refs/tags/}"
+          ver="${ref#v}"
+          echo "version=$ver" >> "$GITHUB_OUTPUT"
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build (Release)
+        run: dotnet build --configuration Release --no-restore /p:ContinuousIntegrationBuild=true
+
+      - name: Pack SDK
+        run: >-
+          dotnet pack ServiceDeskPlus.SDK/ServiceDeskPlus.SDK.csproj
+          --configuration Release
+          --no-build
+          -o ./artifacts
+          /p:PackageVersion=${{ steps.get_version.outputs.version }}
+          /p:IncludeSymbols=true
+          /p:SymbolPackageFormat=snupkg
+
+      - name: Publish .nupkg to NuGet
+        env:
+          NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+        run: dotnet nuget push "artifacts/*.nupkg" --api-key "$NUGET_TOKEN" --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Publish .snupkg symbols to NuGet
+        env:
+          NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+        run: dotnet nuget push "artifacts/*.snupkg" --api-key "$NUGET_TOKEN" --source https://api.nuget.org/v3/index.json --skip-duplicate
+  

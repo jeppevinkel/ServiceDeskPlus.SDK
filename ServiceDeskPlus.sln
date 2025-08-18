@@ -7,6 +7,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{E872480C-4709-4B47-8916-C8CBAF3441C2}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\dotnet-build-test.yaml = .github\workflows\dotnet-build-test.yaml
+		.github\workflows\pack-release.yaml = .github\workflows\pack-release.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{0F8A2D96-77D2-4389-BB22-CB25153A4EF3}"
