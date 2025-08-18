@@ -100,8 +100,37 @@ public class RequestTests
         Assert.Equal("1", result.Requests![0].Id);
     }
 
-    public async Task ListAsync_ThrowsSdpApiException_On404_WithApiStatus()
+    [Fact]
+    public async Task ListAsync_ThrowsSdpApiException_On403_WithApiStatus()
     {
+        // Arrange
+        var errorJson = "{" +
+                        "\"response_status\": {" +
+                        "\"status_code\": 4000, " +
+                        "\"messages\": [{ \"status_code\": 4002, \"type\": \"failed\", \"message\": \"User does not have this permission\" }]," +
+                        "\"status\": \"failed\" }" +
+                        "}";
+
+        var mockHttp = new MockHttpMessageHandler();
+        mockHttp.When(HttpMethod.Get, "https://example.test/api/v3/requests")
+            .Respond(_ => new HttpResponseMessage(HttpStatusCode.Forbidden)
+            {
+                ReasonPhrase = "Forbidden",
+                Content = new StringContent(errorJson, Encoding.UTF8, "application/json")
+            });
         
+        var httpClient = mockHttp.ToHttpClient();
+        httpClient.BaseAddress = new Uri("https://example.test/api/v3/");
+
+        var requestApi = new Request(httpClient);
+
+        // Act + Assert
+        var ex = await Assert.ThrowsAsync<SdpApiException>(() => requestApi.ListAsync());
+        Assert.Equal(HttpStatusCode.Forbidden, ex.HttpStatusCode);
+        Assert.Equal(4000, ex.ApiStatusCode);
+        Assert.NotNull(ex.Messages);
+        Assert.Single(ex.Messages!);
+        Assert.Equal(4002, ex.Messages![0].StatusCode);
+        Assert.Equal("User does not have this permission", ex.Messages![0].Message);
     }
 }
