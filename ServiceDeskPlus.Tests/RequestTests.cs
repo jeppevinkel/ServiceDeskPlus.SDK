@@ -1,7 +1,5 @@
 ﻿using System.Net;
-using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using RichardSzalay.MockHttp;
 using ServiceDeskPlus.SDK;
 using Xunit;
@@ -100,5 +98,10 @@ public class RequestTests
         Assert.NotNull(result.Requests);
         Assert.Equal(2, result.Requests!.Count);
         Assert.Equal("1", result.Requests![0].Id);
+    }
+
+    public async Task ListAsync_ThrowsSdpApiException_On404_WithApiStatus()
+    {
+        
     }
 }
